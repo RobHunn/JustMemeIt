@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <h1> Take Photo </h1>
+  <!-- Stream video via webcam -->
+  <div id="video-wrap">
+    <video id="video" autoplay></video>
+  </div>
+
+  <!-- Trigger canvas web API -->
+  <div class="controller">
+    <button id="snap">Open Camera</button>
+  </div>
+
+  <!-- Trigger picture-->
+  <div class="controller">
+    <button id="snap2">Capture Picture</button>
+  </div>
+
+  <!-- Video Snapshot -->
+  <div id="canvas-wrap">
+    <canvas width="640px" height="480px" id="canvas"></canvas>
+  </div>
+
+  <!-- Save Captured Image -->
+  <form method="POST" action="#">
+    <button id="savedImg" name="savedImg" type="submit">Save Image</button>
+  </form>
+
+  <!--Uploads-->
+  <div id="pick-image">
+    <h6>Up load your image</h6>
+    <input type="file" accept="image/*" id="image-picker">
+  </div>
+
+  <br><br>
+
+  <form id="form2" action="#">
+    <label for="userRequest">Search below</label><br>
+    <input style="border:1px solid black" id="userRequest" type="text" name="userRequest"
+      placeholder="search for photos to memeify"><br>
+    <button id="submitBtn2" type="submit" name="submitBtn2">SUBMIT</button>
+  </form>
+
+  <script src="./js/camera.js"></script>
+  <script src="./js/unsplash.js"></script>
+  <script src="./node_modules/p5/lib/p5.min.js"></script>
+</body>
+
+</html>

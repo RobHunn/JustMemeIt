@@ -1,0 +1,15 @@
+
+canvas{
+  display: none;
+
+}
+
+video{
+  display:none;
+}
+
+html,body{
+  padding: 0%;
+  margin: 0%;
+  background-color: rgb(177, 243, 221);
+}
