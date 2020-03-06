@@ -9,7 +9,5 @@
   "keywords": [],
   "author": "Robert Hunnicutt",
   "license": "ISC",
-  "dependencies": {
-    "p5": "^1.0.0"
-  }
+  "dependencies": {}
 }
