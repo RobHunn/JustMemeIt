@@ -79,7 +79,7 @@ var quill = new Quill('#editor', {
   
 // }
 
-
+// moves from side1 to main grid
 function init2() {
   let local = document.querySelector('#location-t-form');
   let sidebar1 = document.querySelector('#side-bar-1');
@@ -126,7 +126,7 @@ function evalOpt(e) {
     //   cap.classList.add('move-center-btm');
     //   break;
 
-    default: cap.classList.toggle('omomomo')
+    default: cap.classList.toggle('i dunnoo')
       break;
   }
 }
@@ -139,6 +139,10 @@ function logHtmlContent() {
 }
 
 function handleClick(e){
+  let con99 = document.querySelector('#container99');
+  let con100 = document.querySelector('#container100');
+  con100.style = "display:none"
+  con99.style="display:block"
   let selectedImg = e.target;
   selectedImg.style = "width:100%; height:100%";
   let infoi = document.querySelector('#infoi');

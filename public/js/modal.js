@@ -1,7 +1,8 @@
-var modal = document.querySelector("#modal");
-var modalOverlay = document.querySelector("#modal-overlay");
-var closeButton = document.querySelector("#close-button");
-var openButton = document.querySelector("#open-button2");
+const modal = document.querySelector("#modal");
+const modalOverlay = document.querySelector("#modal-overlay");
+const closeButton = document.querySelector("#close-button");
+const openButton = document.querySelector("#open-button2");
+
 var isOpen = false
 
 if(!isOpen){
@@ -17,6 +18,9 @@ isOpen = true ;
 closeButton.addEventListener("click", function() {
   modal.classList.toggle("closed");
   modalOverlay.classList.toggle("closed");
+  video.srcObject.getVideoTracks().map((e)=>{
+      e.stop();
+    })
 });
 
 openButton.addEventListener("click", function() {

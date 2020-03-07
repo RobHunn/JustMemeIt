@@ -1,11 +1,9 @@
-
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const snap = document.getElementById('snap');
 const snap2 = document.getElementById('snap2');
-
-
 const savedImg = document.querySelector('#savedImg')
+const useImg = document.querySelector('#useImg')
 let context = canvas.getContext('2d');
 let dataBase = []
 
@@ -43,6 +41,9 @@ snap.addEventListener("click", function(){
 
 //take photo
 snap2.addEventListener("click", function(){
+  dataBase = []
+  let snapBtn = document.querySelector('#snap');
+  snapBtn.innerText = 'Retake Pic?'
     video.style = "display:none";
     canvas.style = "display:block";
     context.drawImage(video, 0, 0, 640 ,480 );
@@ -53,6 +54,29 @@ snap2.addEventListener("click", function(){
       e.stop();
     })
 });
+//camera to editor
+useImg.addEventListener('click',  function(){
+  let meme2 = dataBase[0];
+  let image2 = new Image();
+  image2.src = meme2
+  console.log(image2);
+  modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+  let kimberly = document.querySelector('#infoi2');
+  let con99 = document.querySelector('#container99');
+  let con100 = document.querySelector('#container100');
+  let infoi = document.querySelector('#infoi');
+   while (kimberly.hasChildNodes()) {  
+  kimberly.removeChild(kimberly.firstChild);
+}
+ while (infoi.hasChildNodes()) {  
+  infoi.removeChild(infoi.firstChild);
+}
+con99.style = "display:none";
+con100.style="display:block"
+kimberly.appendChild(image2)
+})
+
 
 //save image
 savedImg.addEventListener('click', async function(e){
