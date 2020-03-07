@@ -51,7 +51,7 @@ app.post('/api', (req, res) => {
 
   app.post('/api/search', (req, res) => {
   const {userRequest} = req.body;  
-  unsplash.search.photos(userRequest, 1, 10)
+  unsplash.search.photos(userRequest, 1, 20)
   .then(toJson)
   .then(json => {
     let res = []

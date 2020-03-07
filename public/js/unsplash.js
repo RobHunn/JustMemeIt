@@ -15,7 +15,7 @@ form2.addEventListener('submit', async event =>{
       body: JSON.stringify({userRequest})
         })
       const res = await response.json();
-      console.log('i am res ::::',res);
+      console.log('i am res from express ::::',res);
         showData2(res)
     } catch (error) {
       console.log( 'my error :::  ',error)
@@ -27,27 +27,52 @@ function showData2(res){
   let userRequest = document.querySelector('#userRequest')
   userRequest.value = "";
   var container = document.querySelector("#side-bar-1");
+  var container2 = document.querySelector("#side-bar-2");
   var matches = container.querySelectorAll("li");
+  var matches2 = container2.querySelectorAll("li");  
+  let res1 = res.payload.splice(0,10);
+  console.log('res1::: ',res1);
+  
+  let res2 = res.payload.splice(0,10);
   if(!matches){
-      for(var item in res.payload){
+      for(var item in res1){
         const ul = document.querySelector('#side-bar-1');
         const li = document.createElement('li');
         const image = document.createElement('img');
-        image.src = res.payload[item];
+        image.src = res1[item];
         li.appendChild(image);
         ul.appendChild(li);
+  }
+     for(var item in res2){
+        const ul2 = document.querySelector('#side-bar-2');
+        const li2 = document.createElement('li');
+        const image = document.createElement('img');
+        image.src = res2[item];
+        li2.appendChild(image);
+        ul2.appendChild(li2);
   }
   }else{
       matches.forEach(function(userItem) {
         userItem.remove()
       });
-        for(var item in res.payload){
+      matches2.forEach(function(userItem) {
+        userItem.remove()
+      });
+        for(var item in res1){
         const ul = document.querySelector('#side-bar-1');
         const li = document.createElement('li');
         const image = document.createElement('img');
-        image.src = res.payload[item];
+        image.src = res1[item];
         li.appendChild(image);
         ul.appendChild(li);
+  }
+       for(var item in res2){
+        const ul2 = document.querySelector('#side-bar-2');
+        const li2 = document.createElement('li');
+        const image = document.createElement('img');
+        image.src = res2[item];
+        li2.appendChild(image);
+        ul2.appendChild(li2);
   }
   }
   }
