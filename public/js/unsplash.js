@@ -19,10 +19,12 @@ form2.addEventListener('submit', async event =>{
         showData2(res)
     } catch (error) {
       console.log( 'my error :::  ',error)
+      // add fallback when have time
     }
 
   })
 
+//both sidebars logic to display images
 function showData2(res){
   let userRequest = document.querySelector('#userRequest')
   userRequest.value = "";
@@ -86,7 +88,7 @@ var toolbarOptions = [
   ['clean']
 ];
 
-
+// new tool bar quilljs
 var quill = new Quill('#editor', {
   modules: {
     toolbar: toolbarOptions
@@ -104,12 +106,14 @@ var quill = new Quill('#editor', {
   
 // }
 
-// moves from side1 to main grid
+//add saved meme to grid
 function init2() {
   let local = document.querySelector('#location-t-form');
   let sidebar1 = document.querySelector('#side-bar-1');
+  let sidebar2 = document.querySelector('#side-bar-2');
   local.addEventListener('submit', evalOpt);
   sidebar1.addEventListener('click', handleClick);
+  sidebar2.addEventListener('click', handleClick2);
   let x = document.querySelector('.allmemes')
   let output = '';
   gotThemMemes.forEach((item)=>{
@@ -119,6 +123,7 @@ function init2() {
   x.innerHTML = output;
 }
 
+//text location
 function evalOpt(e) {
   e.preventDefault()
   let opt = e.target.children[0].options.selectedIndex
@@ -155,14 +160,24 @@ function evalOpt(e) {
       break;
   }
 }
-
+//quilljs api log html
 function logHtmlContent() {
   //var content = quill.getContents()
   //console.log('quill.root.innerHTML::::', quill.root.innerHTML);
-  let cap = document.querySelector('#cap');
-  cap.innerHTML = quill.root.innerHTML
+ 
+  let selected = document.querySelector('#container100');
+
+  if(selected.style.display == "block"){
+    let cap2 = document.querySelector('#cap2');
+    cap2.innerHTML = quill.root.innerHTML
+  }else{
+      let cap = document.querySelector('#cap');
+      cap.innerHTML = quill.root.innerHTML
+  }
+
 }
 
+//sidebar1 add selected img to edit
 function handleClick(e){
   let con99 = document.querySelector('#container99');
   let con100 = document.querySelector('#container100');
@@ -176,32 +191,93 @@ function handleClick(e){
 }
    infoi.appendChild(selectedImg);
 }
+//sidebar2 add selected img to edit
+function handleClick2(e){
+  let con99 = document.querySelector('#container99');
+  let con100 = document.querySelector('#container100');
+  con100.style = "display:none"
+  con99.style="display:block"
+  let selectedImg = e.target;
+  selectedImg.style = "width:100%; height:100%";
+  let infoi = document.querySelector('#infoi');
+ while (infoi.hasChildNodes()) {  
+  infoi.removeChild(infoi.firstChild);
+}
+   infoi.appendChild(selectedImg);
+}
 
+// quilljs hack to grab html and make copy, dam you quilljs...
+// note to self dont use quilljs...
 
 function saveMeme(){
-let meme = document.querySelector('#container99').innerHTML
-let strMeme = JSON.stringify(meme);
-var res = strMeme.replace(/id/g, "class");
-var res2 = res.replace(/\"\\n/g, " ");
-var res3 = res2.replace(/n        "/g, " ");
-var clean = res3.replace(/\\/g, " ");
-var cleaner = clean.replace(/wclassth/g, "width");
-var cleanist = cleaner.replace(/div> n/g, "div>");
-gotThemMemes.push(cleanist)
-  let x = document.querySelector('.allmemes');
-   while (x.hasChildNodes()) {  
-  x.removeChild(x.firstChild);
-}
-  gotThemMemes.forEach((item)=>{
-    let div = document.createElement('div')
-    div.classList.add('container99');
-    div.innerHTML = item
-    console.log(div);
+  let selected = document.querySelector('#container100');
+
+  if(selected.style.display == "block"){
+  let meme = document.querySelector('#container100').innerHTML
+  gotThemMemes.push(meme)
+    let x = document.querySelector('.allmemes');
+    while (x.hasChildNodes()) {  
+    x.removeChild(x.firstChild);
+  }
+    gotThemMemes.forEach((item)=>{
+      let div = document.createElement('div')
+      console.log('i be item what is diffrent? :::',item);
+       var n = item.includes('id="cap2"');
+       if(n){
+         console.log('hittttt');
+         
+      div.classList.add('container100');
+      div.innerHTML = item
+      x.appendChild(div)
+       }else{
+      div.classList.add('container99');
+      div.innerHTML = item
+      x.appendChild(div)
+       }
+      
+    })
     
-    x.appendChild(div)
-    
-  })
- 
+  }else{
+  let meme = document.querySelector('#container99').innerHTML
+  let strMeme = JSON.stringify(meme);
+  var res = strMeme.replace(/id/g, "class");
+  var res2 = res.replace(/\"\\n/g, " ");
+  var res3 = res2.replace(/n        "/g, " ");
+  var clean = res3.replace(/\\/g, " ");
+  var cleaner = clean.replace(/wclassth/g, "width");
+  var cleanist = cleaner.replace(/div> n/g, "div>");
+  gotThemMemes.push(cleanist)
+    let x = document.querySelector('.allmemes');
+    while (x.hasChildNodes()) {  
+    x.removeChild(x.firstChild);
+  }
+   gotThemMemes.forEach((item)=>{
+      let div = document.createElement('div')
+      console.log('i be item what is diffrent? :::',item);
+       var n = item.includes('id="cap2"');
+       if(n){
+         console.log('hittttt');
+         
+      div.classList.add('container100');
+      div.innerHTML = item
+      x.appendChild(div)
+       }else{
+      div.classList.add('container99');
+      div.innerHTML = item
+      x.appendChild(div)
+       }
+      
+    })
+    // gotThemMemes.forEach((item)=>{
+    //   let div = document.createElement('div')
+    //   div.classList.add('container99');
+    //   div.innerHTML = item
+    //   console.log('div container99 ::',div);
+      
+    //   x.appendChild(div)
+      
+    // })
+  }
 
 }
 

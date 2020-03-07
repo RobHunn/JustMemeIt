@@ -54,12 +54,11 @@ snap2.addEventListener("click", function(){
       e.stop();
     })
 });
-//camera to editor
+//camera pic to editor
 useImg.addEventListener('click',  function(){
   let meme2 = dataBase[0];
   let image2 = new Image();
   image2.src = meme2
-  console.log(image2);
   modal.classList.toggle("closed");
   modalOverlay.classList.toggle("closed");
   let kimberly = document.querySelector('#infoi2');
@@ -99,7 +98,7 @@ savedImg.addEventListener('click', async function(e){
 
 })
 
-// const takePhoto = document.querySelector('#takePhoto')
+// const takePhoto = document.querySelector('#takePhoto') p5js bs...
 // takePhoto.addEventListener('click', showV )
 
   
