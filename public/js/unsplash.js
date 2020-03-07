@@ -1,4 +1,6 @@
  window.addEventListener('load', init2);
+let gotThemMemes = [];
+
 // unsplash api
 form2.addEventListener('submit', async event =>{
     event.preventDefault();
@@ -20,8 +22,6 @@ form2.addEventListener('submit', async event =>{
     }
 
   })
-
-  
 
 function showData2(res){
   let userRequest = document.querySelector('#userRequest')
@@ -54,15 +54,10 @@ function showData2(res){
 
 var toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],
-  ['blockquote', 'code-block'],
   [{ 'header': 1 }, { 'header': 2 }],
   [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-  [{ 'indent': '-1'}, { 'indent': '+1' }],
-  [{ 'direction': 'rtl' }],
   [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
   [{ 'color': [] }, { 'background': [] }],
-  [{ 'font': [] }],
-  [{ 'align': [] }],
   ['clean']
 ];
 
@@ -90,6 +85,13 @@ function init2() {
   let sidebar1 = document.querySelector('#side-bar-1');
   local.addEventListener('submit', evalOpt);
   sidebar1.addEventListener('click', handleClick);
+  let x = document.querySelector('.allmemes')
+  let output = '';
+  gotThemMemes.forEach((item)=>{
+    output+= item
+
+  })
+  x.innerHTML = output;
 }
 
 function evalOpt(e) {
@@ -140,12 +142,37 @@ function handleClick(e){
   let selectedImg = e.target;
   selectedImg.style = "width:100%; height:100%";
   let infoi = document.querySelector('#infoi');
-  
  while (infoi.hasChildNodes()) {  
   infoi.removeChild(infoi.firstChild);
 }
-
    infoi.appendChild(selectedImg);
+}
 
+
+function saveMeme(){
+let meme = document.querySelector('#container99').innerHTML
+let strMeme = JSON.stringify(meme);
+var res = strMeme.replace(/id/g, "class");
+var res2 = res.replace(/\"\\n/g, " ");
+var res3 = res2.replace(/n        "/g, " ");
+var clean = res3.replace(/\\/g, " ");
+var cleaner = clean.replace(/wclassth/g, "width");
+var cleanist = cleaner.replace(/div> n/g, "div>");
+gotThemMemes.push(cleanist)
+  let x = document.querySelector('.allmemes');
+   while (x.hasChildNodes()) {  
+  x.removeChild(x.firstChild);
+}
+  gotThemMemes.forEach((item)=>{
+    let div = document.createElement('div')
+    div.classList.add('container99');
+    div.innerHTML = item
+    console.log(div);
+    
+    x.appendChild(div)
+    
+  })
+ 
 
 }
+

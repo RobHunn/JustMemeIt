@@ -48,21 +48,17 @@
             <li>Or take a photo, use camera icon top right-hand corner</li>
             <li>Delete this text, & enter yours here, then click save to apply formatting to image</li>
           </ol> -->
-          <p style="color: aqua;">okokokok</p>
+          <p style="color: aqua;">Hello World</p>
         </div>
 
-        <button onclick="logHtmlContent()">BUILD THAT MEME</button>
+        <button style="padding: 7px; margin:7px; border-radius: 25px;" onclick="logHtmlContent()">APPLY TEXT</button>
 
 
-
-        <!-- <div id="selectedImg"></div> -->
-        <div id="container99">
+        <div style="margin:10px" id="container99">
           <div id="cap"></div>
-          <div id="infoi">
-            <!-- <img width="100%" height="100%" src="./images/male-placeholder.jpg" /> -->
-
-          </div>
+          <div id="infoi"></div>
         </div>
+
         <form id="location-t-form" action="#">
           <select name="location-t" id="location-t" aria-label="Top or Bottom ">
             <optgroup label="Top text location">
@@ -76,11 +72,16 @@
               <option value="bottom-right">Right</option>
             </optgroup>
           </select>
-          <button type="submit"> submit</button>
+          <button type="submit">Change Text Location</button>
+          <button onclick="saveMeme()" type="submit">Save Meme</button>
         </form>
 
         <!-- Create the toolbar container -->
         <div id="toolbar">
+
+        </div>
+
+        <div style="margin: 10px;" class="allmemes">
 
         </div>
 
