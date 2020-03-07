@@ -9,7 +9,7 @@
   <!-- Theme included stylesheets -->
   <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
   <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:500&display=swap" rel="stylesheet">
   <title>Document</title>
 </head>
 
@@ -18,7 +18,7 @@
   <div class="container">
     <div class="container-1">
       <div class="box-1">
-        <h6>Click to select image</h6>
+        <h6>Click image to select</h6>
         <ul id="side-bar-1"></ul>
       </div>
     </div>
@@ -28,13 +28,13 @@
         <!--Search-->
         <ul id="ul-top">
           <li>
-            <img width="150px" height="75px" src="./images/covercopy.png"></a>
+            <a href="#"><img width="150px" height="75px" src="./images/covercopy.png"></a>
           </li>
           <li id="search-li">
             <form id="form2" action="#">
               <input style=" border:1px solid black" id="userRequest" type="text" name="userRequest"
-                placeholder="Type here to search for photos to memeify">
-              <button id="submitBtn2" type="submit" name="submitBtn2">SUBMIT</button>
+                placeholder="Type here to search photos to Memeify">
+              <button id="submitBtn2" type="submit" name="submitBtn2">Search</button>
             </form>
           </li>
           <li> <button id="open-button2"><img width="40px" src="./images/camera.jpg" alt=""></button> </li>
@@ -43,10 +43,41 @@
       <div class="box-2-2">
 
         <div id="editor">
-          <p>Hello World!</p>
-          <p>Some initial <strong>bold</strong> text</p>
-          <p><br></p>
+          <!-- <ol>
+            <li>Use the search feature to find photos</li>
+            <li>Or take a photo, use camera icon top right-hand corner</li>
+            <li>Delete this text, & enter yours here, then click save to apply formatting to image</li>
+          </ol> -->
+          <p style="color: aqua;">okokokok</p>
         </div>
+
+        <button onclick="logHtmlContent()">BUILD THAT MEME</button>
+
+
+
+        <!-- <div id="selectedImg"></div> -->
+        <div id="container99">
+          <div id="cap"></div>
+          <div id="infoi">
+            <!-- <img width="100%" height="100%" src="./images/male-placeholder.jpg" /> -->
+
+          </div>
+        </div>
+        <form id="location-t-form" action="#">
+          <select name="location-t" id="location-t" aria-label="Top or Bottom ">
+            <optgroup label="Top text location">
+              <option value="top-left">Left</option>
+              <option value="top-center">Center</option>
+              <option value="top-right">Right</option>
+            </optgroup>
+            <optgroup label="Bottom text location">
+              <option value="bottom-left">Left</option>
+              <option value="bottom-center">Center</option>
+              <option value="bottom-right">Right</option>
+            </optgroup>
+          </select>
+          <button type="submit"> submit</button>
+        </form>
 
         <!-- Create the toolbar container -->
         <div id="toolbar">
@@ -77,32 +108,28 @@
   </div>
 
   <div class="modal" id="modal">
-    <!-- things that don't scroll -->
     <div class="modal-guts">
-      <li> <video id="video" autoplay></video> </li>
-      <li> <button id="snap">Open Camera</button> </li>
       <button id="close-button">Close </button>
+      <video id="video" autoplay></video>
       <!-- Video Snapshot -->
       <div id="canvas-wrap">
         <canvas width="640px" height="480px" id="canvas"></canvas>
       </div>
       <!-- Save Captured Image -->
-      <form method="POST" action="#">
-        <button id="savedImg" name="savedImg" type="submit">Save Image</button>
-      </form>
+      <button id="snap">Open Camera</button>
       <button id="snap2">Capture Picture</button>
+      <button id="savedImg" name="savedImg" type="submit">Save Image</button>
     </div>
   </div>
+
   <div class="modal-overlay" id="modal-overlay"></div>
 
+
   <script src="./js/modal.js"></script>
-  <!-- Main Quill library -->
-  <script src=" //cdn.quilljs.com/1.0.0/quill.js">
-  </script>
+  <script src="//cdn.quilljs.com/1.0.0/quill.js"></script>
   <script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>
   <script src="./js/camera.js"></script>
   <script src="./js/unsplash.js"></script>
-  <!-- Include the Quill library -->
 </body>
 
 </html>

@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'xxxxx',
+  password: '$Treymysql74!',
   database: 'meme'
 })
 

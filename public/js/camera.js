@@ -1,11 +1,10 @@
-'use strict';
+
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const snap = document.getElementById('snap');
 const snap2 = document.getElementById('snap2');
-const errorMsgElement = document.getElementById('spanErrorMsg');
-const imagePicker = document.getElementById('image-picker');
-const videoDiv = document.getElementById('video-wrap');
+
+
 const savedImg = document.querySelector('#savedImg')
 let context = canvas.getContext('2d');
 let dataBase = []
@@ -24,19 +23,19 @@ async function init(){
         handleSuccess(stream);
     }
     catch(e){
-        errorMsgElement.innerHTML = `navigator.getUserMedia.error:${e.toString()}`;
+       
+        console.log(e);
+        
     }
 }
 
 // Success
 function handleSuccess(stream){
-    window.stream = stream
     video.srcObject = stream;
 }
 
 //open cam
 snap.addEventListener("click", function(){
-  
   init()
   video.style = "display:block";
   canvas.style = "display:none";
@@ -48,7 +47,7 @@ snap2.addEventListener("click", function(){
     canvas.style = "display:block";
     context.drawImage(video, 0, 0, 640 ,480 );
     const myCanvas = document.querySelector("#canvas");
-    const imageURL = myCanvas.toDataURL();
+    const imageURL = myCanvas.toDataURL(); 
     dataBase.push(imageURL);
     video.srcObject.getVideoTracks().map((e)=>{
       e.stop();

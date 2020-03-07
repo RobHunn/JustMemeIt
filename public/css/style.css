@@ -9,7 +9,11 @@ video{
 html,body{
   padding: 0%;
   margin: 0%;
+  color: azure;
+  font-family: 'Noto Sans JP', sans-serif;
+  letter-spacing: .1em;
 }
+
 ul{
   list-style-type: none;
   padding: 0%;
@@ -17,15 +21,10 @@ ul{
 }
 
 li{
-  border: 1px solid black;
   padding: 5px;
   margin-bottom: 5px;
 }
-.container-1 div, .container-2 div, .container-3 div, .container-4 div{
-  border: 1px solid black;
-  margin: 2px;
-  padding: 2px;
-}
+
 .container{
   display: flex;
   align-items: flex-start;
@@ -77,8 +76,11 @@ li{
 }
 #userRequest{
   text-align: center;
-width:80%;
-height: 50px;
+  width:80%;
+  height: 50px;
+  font-family:  'Noto Sans JP', sans-serif;
+  font-size:1rem;
+  border-radius: 25px;
 }
 
 
@@ -107,3 +109,57 @@ height: 50px;
   flex-direction: column;
   order:1;
 }
+
+/* Quilljs*/
+.ql-snow.ql-toolbar button svg, .ql-snow .ql-toolbar button svg{
+  
+  background-color: aliceblue;
+
+}
+
+.ql-toolbar.ql-snow .ql-picker-label{
+  background-color: aliceblue;
+}
+body > div.container > div.container-2 > div.box-2-2 > div.ql-toolbar.ql-snow > span:nth-child(6) > span > span.ql-picker-label{
+  background-color: aliceblue;
+}
+
+#container99 {
+  width: 400px;
+  height: 400px;
+  position: relative;
+}
+#cap{
+  z-index: 10;
+}
+#cap,
+#infoi {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+ 
+}
+#infoi {
+  z-index: 1;
+}
+
+.move-left{
+  text-align: left;
+}
+.move-center{
+  text-align: center;
+}
+.move-right{
+  text-align: right;
+}
+
+
+/* .move-left-btm{
+ bottom: 0;
+}
+.move-center-btm{
+  text-align: center;
+}
+.move-right-btm{
+  text-align: right;
+} */
