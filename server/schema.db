@@ -1,0 +1,6 @@
+CREATE TABLE images
+	(
+		img_id INT NOT NULL AUTO_INCREMENT,
+		pic TINYTEXT,
+		PRIMARY KEY(img_id)
+	);

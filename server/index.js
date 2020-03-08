@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '$Treymysql74!',
+  password: 'xxxxx',
   database: 'meme'
 })
 
@@ -43,10 +43,30 @@ db.connect( (err) => {
 });
 
 app.post('/api', (req, res) => {
-  console.log('hit /api' );
   const {data} = req.body;
-  console.log('::::::::',req);
-  res.status(200).send(data)
+   
+  let dbQuery = 'INSERT INTO images (pic) VALUES (?);'
+  db.query(dbQuery,[data], (err, rows, fields) => {
+        if (err) {
+          console.log('query error: ', err.stack)
+          throw err;
+        } else{
+          myfunc()
+        }
+  })
+  function myfunc(){
+      res.status(200).send({'message':'good to go...'})
+  }
+  })
+
+  app.get('/api/images', (req, res) => {
+console.log('HIT::::::::');
+
+  
+    db.query('SELECT * from images;',  (err, rows, fields) => {
+      res.status(200).send(rows);
+  })
+    
   })
 
   app.post('/api/search', (req, res) => {
