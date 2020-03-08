@@ -5,7 +5,26 @@ canvas{
 video{
   display:none;
 }
-
+#submitBtn2{
+  border: none;
+  padding: 0;
+  margin: 0;
+  
+  background-color: #212121;
+}
+#open-button2{
+  border: none;
+  padding: 0;
+  margin: 0;
+  margin-right: 25px;
+  background-color: #212121;
+}
+#target-1-side{
+  display:none
+}
+#target-2-side{
+  display: none;
+}
 html,body{
   padding: 0%;
   margin: 0%;
@@ -111,6 +130,7 @@ li{
   flex-direction: column;
   justify-content: space-around;
   order: 3;
+  width: 200px;
 }
 .box-3 {
   display: flex;

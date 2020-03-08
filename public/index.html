@@ -10,15 +10,16 @@
   <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
   <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:500&display=swap" rel="stylesheet">
-  <title>Document</title>
+  <title>Just meme It</title>
 </head>
 
 <body>
 
   <div class="container">
+
     <div class="container-1">
       <div class="box-1">
-        <h6>Click image to select</h6>
+        <h6 id="target-1-side">Click image to select</h6>
         <ul id="side-bar-1"></ul>
       </div>
     </div>
@@ -28,16 +29,18 @@
         <!--Search-->
         <ul id="ul-top">
           <li>
-            <a href="https://jskings.com"><img width="150px" height="75px" src="./images/covercopy.png"></a>
+            <a href="https://jskings.com"><img width="150px" height="75px" src="./images/js.svg"></a>
           </li>
           <li id="search-li">
             <form id="form2" action="#">
               <input style=" border:1px solid black" id="userRequest" type="text" name="userRequest"
                 placeholder="Type here to search photos to Memeify">
-              <button id="submitBtn2" type="submit" name="submitBtn2">Search</button>
+              <button id="submitBtn2" type="submit" name="submitBtn2">
+                <img width="50px" src="./images/search.png" alt="">
+              </button>
             </form>
           </li>
-          <li> <button id="open-button2"><img width="40px" src="./images/camera.jpg" alt=""></button> </li>
+          <li> <button id="open-button2"><img width="40px" src="./images/camera2.png" alt=""></button> </li>
         </ul>
       </div>
       <div class="box-2-2">
@@ -78,6 +81,7 @@
           </select>
           <button type="submit">Change Text Location</button>
           <button onclick="saveMeme()" type="submit">Save Meme</button>
+          <button id="savedImg" name="savedImg" type="submit">Save Cam Images to dataBase</button>
         </form>
 
         <!-- Create the toolbar container -->
@@ -93,7 +97,7 @@
 
     <div class="container-3">
       <div class="box-3">
-        <h6>Click to Select</h6>
+        <h6 id="target-2-side">Click to Select</h6>
         <ul id="side-bar-2"></ul>
       </div>
     </div>
@@ -112,7 +116,7 @@
       <button id="snap">Open Camera</button>
       <button id="snap2">Capture Picture</button>
       <button id="useImg">MemeIt</button>
-      <button id="savedImg" name="savedImg" type="submit">Save Image</button>
+      <!-- <button id="savedImg" name="savedImg" type="submit">Save Image</button> -->
     </div>
   </div>
 

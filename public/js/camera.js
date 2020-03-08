@@ -6,6 +6,7 @@ const savedImg = document.querySelector('#savedImg')
 const useImg = document.querySelector('#useImg')
 let context = canvas.getContext('2d');
 let dataBase = []
+let data = []
 
 const constraints = {
     audio: false,
@@ -50,6 +51,7 @@ snap2.addEventListener("click", function(){
     const myCanvas = document.querySelector("#canvas");
     const imageURL = myCanvas.toDataURL(); 
     dataBase.push(imageURL);
+    data.push(imageURL);
     video.srcObject.getVideoTracks().map((e)=>{
       e.stop();
     })
@@ -79,6 +81,7 @@ kimberly.appendChild(image2)
 
 //save image
 savedImg.addEventListener('click', async function(e){
+ 
   e.preventDefault()
     try {
       const response = await fetch('/api', {
@@ -87,13 +90,13 @@ savedImg.addEventListener('click', async function(e){
       'Accept': 'application/json',
       'Content-Type': 'application/json'
       },
-      body: JSON.stringify({dataBase})
+      body: JSON.stringify({data})
         })
       const res = await response.json();
       console.log('res from express ',res);
       console.log("IMAGE SAVED::::");
     } catch (error) {
-      console.log( 'my error :::  ',error)
+      console.log( 'my error :::  ',error.stack)
     } 
 
 })

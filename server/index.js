@@ -43,10 +43,10 @@ db.connect( (err) => {
 });
 
 app.post('/api', (req, res) => {
-  console.log('hit /api');
-  const {dataBase} = req.body;
-  console.log('::::::::',dataBase);
-  res.status(200).send({"message": 'image saved'})
+  console.log('hit /api' );
+  const {data} = req.body;
+  console.log('::::::::',req);
+  res.status(200).send(data)
   })
 
   app.post('/api/search', (req, res) => {

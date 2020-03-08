@@ -4,6 +4,10 @@ let gotThemMemes = [];
 // unsplash api
 form2.addEventListener('submit', async event =>{
     event.preventDefault();
+    const sidebar1 = document.querySelector('#target-1-side');
+    const sidebar2 = document.querySelector('#target-2-side');
+    sidebar1.style = "display:block";
+    sidebar2.style = "display:block";
     let userRequest = document.querySelector('#userRequest').value
     try {
       const response = await fetch('/api/search', {
@@ -221,10 +225,9 @@ function saveMeme(){
   }
     gotThemMemes.forEach((item)=>{
       let div = document.createElement('div')
-      console.log('i be item what is diffrent? :::',item);
+
        var n = item.includes('id="cap2"');
        if(n){
-         console.log('hittttt');
          
       div.classList.add('container100');
       div.innerHTML = item
