@@ -4,3 +4,34 @@ CREATE TABLE images
 		pic TINYTEXT,
 		PRIMARY KEY(img_id)
 	);
+
+CREATE TABLE query_terms (
+`id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+`term` VARCHAR(60)
+);
+
+CREATE TABLE urls (
+`urls` VARCHAR(255) NOT NULL PRIMARY KEY
+);
+
+CREATE TABLE term_url (
+`term_id` INT NOT NULL,
+`urls` VARCHAR(255) NOT NULL,
+PRIMARY KEY(`term_id`)
+);
+
+////////////////////////////////////////////////////
+
+select query_terms * urls *
+FROM query_terms
+INNER JOIN term_url
+ON term_url.term_id = query_terms.id
+INNER JOIN urls
+ON urls.urls = term_url.urls
+
+SELECT p.*, f.*
+FROM person p
+INNER JOIN person_fruit pf
+ON pf.person_id = p.id
+INNER JOIN fruits f
+ON f.fruit_name = pf.fruit_name

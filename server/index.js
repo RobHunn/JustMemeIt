@@ -44,7 +44,6 @@ db.connect( (err) => {
 
 app.post('/api', (req, res) => {
   const {data} = req.body;
-   
   let dbQuery = 'INSERT INTO images (pic) VALUES (?);'
   db.query(dbQuery,[data], (err, rows, fields) => {
         if (err) {
@@ -60,17 +59,15 @@ app.post('/api', (req, res) => {
   })
 
   app.get('/api/images', (req, res) => {
-console.log('HIT::::::::');
-
-  
+  console.log('HIT::::::::');
     db.query('SELECT * from images;',  (err, rows, fields) => {
       res.status(200).send(rows);
   })
-    
   })
 
   app.post('/api/search', (req, res) => {
-  const {userRequest} = req.body;  
+  let {userRequest} = req.body;  
+  userRequest = userRequest.toLowerCase()
   unsplash.search.photos(userRequest, 1, 20)
   .then(toJson)
   .then(json => {
@@ -84,9 +81,38 @@ console.log('HIT::::::::');
     console.error({'err:::': err.stack});
   })
   const myFunc = (payload)=>{
-  res.status(200).send({payload})
-  }
+  let dbQuery = 'INSERT INTO query_terms (term) VALUES (?);'
+  let dbQuery2 = 'SELECT * FROM query_terms WHERE term = ?;'
+  let dbQuery3 = `INSERT INTO term_url (term_id,urls) VALUES(LAST_INSERT_ID(),?);`
+  let output = '';
+  payload.forEach((e)=>{
+    output += `${e},`
   })
+  
+  db.query(dbQuery2,[userRequest], (err, rows, fields) => {
+      if(err){
+        console.log('mysql  query error :', err);
+      } 
+      if(rows[0] ){
+        res.status(200).send(payload)
+      } else {
+          db.query(dbQuery,[userRequest], (err, rows, fields) => {
+            if(err){
+               console.log('mysql  query error :', err);
+            }else{
+              db.query(dbQuery3,[output], (err, rows, fields) => {
+                if(err){
+                  console.log('mysql  query error :', err);
+                }else{
+                  res.status(200).send(payload)
+                }
+              })
+            }
+          })
+      }
+  })
+  }
+})
 
 app.listen(port, () => {
     console.log(`Listening on http://localhost:${port}`); 

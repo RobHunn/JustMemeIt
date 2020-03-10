@@ -36,10 +36,10 @@ function showData2(res){
   var container2 = document.querySelector("#side-bar-2");
   var matches = container.querySelectorAll("li");
   var matches2 = container2.querySelectorAll("li");  
-  let res1 = res.payload.splice(0,10);
+  let res1 = res.splice(0,10);
   console.log('res1::: ',res1);
   
-  let res2 = res.payload.splice(0,10);
+  let res2 = res.splice(0,10);
   if(!matches){
       for(var item in res1){
         const ul = document.querySelector('#side-bar-1');
