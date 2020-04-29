@@ -1,5 +1,5 @@
 # JustMemeIt
-A dank meme generator html css javascript flexbox node.js express mysql Unsplash API hosted quilljs --->
+A dank meme generator html css javascript flexbox node.js express mysql Unsplash API quilljs API Webcam to take pics--->
 
 
 # hello, This is JustMemeiT
@@ -8,7 +8,7 @@ A dank meme generator html css javascript flexbox node.js express mysql Unsplash
 ## what is JustMemeIt?
 see [jskings.com](https://meme.jskings.com)
 
-> Markdown is a lightweight markup language, originally created by Robert Hunnicutt allowing people "to write using an easy-to-write meme genorator. Search for photos or take one all in one place ".
+> originally created by Robert Hunnicutt allowing people "to write using an easy-to-write meme genorator. Search for photos or take one all in one place ".
 
 ----
 ## usage
@@ -21,5 +21,5 @@ see [jskings.com](https://meme.jskings.com)
 ##
 npm i 
 set up db connection
-get a developer licence from unspash doc page
+get a developer licence from unspash doc page see my tuts on youtube for it
 ----
